@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: 'product'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: '8979985527'
+    ports:
+      - '5432:5432'
+    networks:
+      - springboot-network
+
+  springboot:
+    build: .
+    container_name: product_module_project
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/product
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 8979985527
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_APPLICATION_NAME: dhananjay
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+    networks:
+      - springboot-network
+
+networks:
+  springboot-network:
+    driver: bridge
