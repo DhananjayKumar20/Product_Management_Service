@@ -339,7 +339,7 @@ Authorization: Bearer <your_jwt_token>
 }
 ```
 
-> ✅ Signup ke saath hi JWT token mil jaata hai — alag se login ki zaroorat nahi.
+> ✅ Signup successful.
 
 ---
 
