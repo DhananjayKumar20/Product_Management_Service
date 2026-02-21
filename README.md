@@ -193,7 +193,7 @@ The **Product Module API** is a Spring Boot application designed to manage produ
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/DhananjayKumar20/product-module-api.git
+git clone https://github.com/DhananjayKumar20/Product_Management_Service.git -b master .
 cd product-module-api
 ```
 
@@ -710,7 +710,7 @@ Contributions are welcome!
 
 1. **Fork the Repository**
 ```bash
-git clone https://github.com/DhananjayKumar20/product-module-api.git
+git clone https://github.com/DhananjayKumar20/Product_Management_Service.git -b master .
 cd product-module-api
 ```
 
