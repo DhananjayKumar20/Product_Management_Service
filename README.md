@@ -314,26 +314,32 @@ Authorization: Bearer <your_jwt_token>
 
 ## 📝 Sample Request & Response Payloads
 
-### 🔐 1. Register User
+### 🔐 1. Register User (Signup)
 
 **Endpoint:** `POST /api/auth/signup`
 
-**Request:**
+**Request Body:**
 ```json
 {
-  "username": "dhananjay",
-  "email": "dhananjay@example.com",
-  "password": "password123",
-  "role": "ADMIN"
+  "name": "viksssddsa",
+  "email": "dhsadssdsns@example.com",
+  "password": "123",
+  "userType": "ADMIN"
 }
 ```
 
 **Response:** `200 OK`
 ```json
 {
-  "message": "User registered successfully"
+  "id": 3,
+  "email": "dhsadssdsns@example.com",
+  "name": "viksssddsa",
+  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkaHNhZHNzZHNuc0BleGFtcGxlLmNvbSIsInVzZXJJZCI6MywiaWF0IjoxNzcxNjQxODcxLCJleHAiOjE3NzE2NzA2NzF9.fO2tNEvJw7Gfq6R9GWiNpgAanuLNiTALQoBn7C_pA1QTAToUnMdK1tYvX5lFioxz4PiAje6tw2VjyHGXyvNBIg",
+  "message": "Signup successful"
 }
 ```
+
+> ✅ Signup ke saath hi JWT token mil jaata hai — alag se login ki zaroorat nahi.
 
 ---
 
@@ -341,20 +347,22 @@ Authorization: Bearer <your_jwt_token>
 
 **Endpoint:** `POST /api/auth/login`
 
-**Request:**
+**Request Body:**
 ```json
 {
-  "email": "dhananjay@example.com",
-  "password": "password123"
+  "email": "dhsadssdsns@example.com",
+  "password": "123"
 }
 ```
 
 **Response:** `200 OK`
 ```json
 {
-  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkaGFuYW5qYXkiLCJpYXQiOjE3MDg0NTYwMDAsImV4cCI6MTcwODQ4NDgwMH0.xxxxx",
-  "type": "Bearer",
-  "role": "ADMIN"
+  "id": 3,
+  "email": "dhsadssdsns@example.com",
+  "name": "viksssddsa",
+  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkaHNhZHNzZHNuc0BleGFtcGxlLmNvbSIsInVzZXJJZCI6MywiaWF0IjoxNzcxNjQyMjEzLCJleHAiOjE3NzE2NzEwMTN9._sxhVR0LmY-GiuoyUMVZq5cFMydCIG5kwHwycYvz19JvRqiumnty3gs1nTqO3nBHKSTF5O5NFqnuD5fQllIAsQ",
+  "message": "Login successful"
 }
 ```
 
