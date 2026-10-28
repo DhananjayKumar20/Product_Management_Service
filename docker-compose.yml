@@ -1,0 +1,37 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: ikaansh_mysql_db
+    environment:
+      MYSQL_DATABASE: ikaansh_task_db
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${DB_PASSWORD:-root}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - springboot-network
+
+  springboot:
+    build: .
+    container_name: ikaansh_task_service
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/ikaansh_task_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&sessionVariables=innodb_lock_wait_timeout=5
+      DB_USERNAME: root
+      DB_PASSWORD: ${DB_PASSWORD:-root}
+      JWT_SECRET: ${JWT_SECRET:-e3f2a1b4c5d6e7f89123456789abcdef0123456789abcdef0123456789abcdef}
+      SPRING_APPLICATION_NAME: dhananjay
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - springboot-network
+
+networks:
+  springboot-network:
+    driver: bridge
